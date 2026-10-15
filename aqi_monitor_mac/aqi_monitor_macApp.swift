@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct aqi_monitor_macApp: App {
+    @StateObject private var model = AQIModel()
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra {
+            AQIMenuView(model: model)
+        } label: {
+            Text(model.menuBarLabel)
         }
+        .menuBarExtraStyle(.window)
     }
 }
+
